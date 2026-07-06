@@ -1,0 +1,8 @@
+# Put your static assets here (images, logo, favicon, etc.).
+#
+# Files in this folder are served from the site root, e.g.
+#   public/logo.png        ->  /logo.png
+#   public/projects/x.jpg  ->  /projects/x.jpg
+#
+# This file just keeps the folder in version control; you can delete it
+# once you add real assets.
