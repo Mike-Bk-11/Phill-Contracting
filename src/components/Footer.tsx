@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "./ui/Container";
 import { navLinks, siteConfig } from "@/data/siteConfig";
 
@@ -10,17 +11,18 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + blurb */}
           <div>
-            <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-md bg-accent-500 font-display text-lg font-bold text-white">
-                P
-              </span>
-              <span className="font-display text-lg font-bold text-white">
-                {siteConfig.name}
-              </span>
-            </div>
+            {/* Logo rendered white via a filter so it reads on the dark footer. */}
+            <Image
+              src={siteConfig.logo}
+              alt={`${siteConfig.name} logo`}
+              width={siteConfig.logoWidth}
+              height={siteConfig.logoHeight}
+              className="h-12 w-auto [filter:brightness(0)_invert(1)]"
+            />
             <p className="mt-4 text-sm leading-relaxed text-brand-200">
-              {siteConfig.tagline}. Licensed & insured. {siteConfig.license}.
+              {siteConfig.tagline}. Licensed & insured.
             </p>
+            <SocialLinks />
           </div>
 
           {/* Quick links */}
@@ -87,5 +89,50 @@ export function Footer() {
         </div>
       </Container>
     </footer>
+  );
+}
+
+/** Renders a row of social icons, showing only the platforms with a URL set. */
+function SocialLinks() {
+  const links = [
+    { key: "facebook", href: siteConfig.social.facebook, label: "Facebook", Icon: FacebookIcon },
+    { key: "instagram", href: siteConfig.social.instagram, label: "Instagram", Icon: InstagramIcon },
+  ].filter((l) => l.href);
+
+  if (links.length === 0) return null;
+
+  return (
+    <div className="mt-5 flex items-center gap-3">
+      {links.map(({ key, href, label, Icon }) => (
+        <a
+          key={key}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent-500"
+        >
+          <Icon />
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+    </svg>
   );
 }

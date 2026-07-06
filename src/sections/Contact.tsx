@@ -84,12 +84,7 @@ export function Contact() {
             <ContactRow label="Email us" value={siteConfig.email} href={siteConfig.emailHref}>
               <MailIcon />
             </ContactRow>
-            <ContactRow
-              label="Visit us"
-              value={`${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`}
-            >
-              <PinIcon />
-            </ContactRow>
+           
           </div>
 
           <div className="mt-8 rounded-2xl bg-white p-5 shadow-sm">

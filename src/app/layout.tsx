@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     "home remodeling",
     "kitchen remodeling",
     "bathroom remodeling",
-    "home additions",
     "general contractor",
     "construction",
     siteConfig.address.city,

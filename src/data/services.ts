@@ -17,7 +17,8 @@ export type ServiceIcon =
   | "addition"
   | "roofing"
   | "flooring"
-  | "exterior";
+  | "exterior"
+  | "commercial";
 
 export const services: Service[] = [
   {
@@ -37,20 +38,12 @@ export const services: Service[] = [
     features: ["Walk-in showers", "Vanities & tile", "Plumbing updates"],
   },
   {
-    slug: "home-additions",
-    title: "Home Additions",
+    slug: "basement-finishing",
+    title: "Basement Finishing",
     description:
-      "Add space and value with room additions, second stories, and in-law suites designed around your needs.",
+      "Transform your basement into a functional living space with custom finishes, lighting, and storage solutions.",
     icon: "addition",
-    features: ["Room additions", "Second stories", "Sunrooms & garages"],
-  },
-  {
-    slug: "roofing",
-    title: "Roofing",
-    description:
-      "Protect your investment with durable roof installation, repair, and replacement using quality materials.",
-    icon: "roofing",
-    features: ["Repairs & replacement", "Shingle & metal", "Storm damage"],
+    features: ["Custom finishes", "Lighting & electrical", "Storage solutions"],
   },
   {
     slug: "flooring",
@@ -67,5 +60,13 @@ export const services: Service[] = [
       "Boost curb appeal and efficiency with new siding, decks, windows, and complete exterior renovations.",
     icon: "exterior",
     features: ["Siding & decks", "Windows & doors", "Painting"],
+  },
+  {
+    slug: "commercial-projects",
+    title: "Commercial Projects",
+    description:
+      "From offices and retail spaces to tenant build-outs and renovations, we deliver commercial work on schedule and to code.",
+    icon: "commercial",
+    features: ["Build-outs & renovations", "Offices & retail", "Code compliance"],
   },
 ];

@@ -18,7 +18,7 @@ const values = [
   },
   {
     title: "Local & Trusted",
-    text: `Proudly serving ${siteConfig.serviceArea} with hundreds of happy homeowners.`,
+    text: `Proudly serving ${siteConfig.serviceArea} with hundreds of happy residential and commercial clients.`,
   },
 ];
 
@@ -50,18 +50,18 @@ export function About() {
             About Us
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-brand-900 sm:text-4xl">
-            Your Trusted Partner for Home Improvement
+            Your Trusted Partner for Residential & Commercial Construction
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-brand-700">
             {/* TODO: Replace with the real company story. */}
-            {siteConfig.name} is a family-owned home remodeling and general
+            {siteConfig.name} is a family-owned remodeling and general
             construction company. For over {siteConfig.yearsInBusiness} years,
-            we&apos;ve helped homeowners turn their houses into the homes
-            they&apos;ve always wanted — one quality project at a time.
+            we&apos;ve helped homeowners and businesses bring their projects to
+            life — one quality build at a time.
           </p>
           <p className="mt-4 leading-relaxed text-brand-700">
-            We treat every home like our own, combining time-tested craftsmanship
-            with clear communication from the first estimate to the final walkthrough.
+            We treat every job like our own, combining time-tested craftsmanship with clear
+            communication from the first estimate to the final walkthrough.
           </p>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2">

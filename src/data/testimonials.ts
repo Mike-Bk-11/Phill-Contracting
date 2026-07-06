@@ -14,7 +14,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t1",
     name: "Sarah M.",
-    location: "Springfield, IL",
+    location: "Boston, MA",
     rating: 5,
     quote:
       "Phill and his team completely transformed our kitchen. They were on time, on budget, and the craftsmanship is outstanding. We couldn't be happier!",
@@ -22,7 +22,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t2",
     name: "James T.",
-    location: "Chatham, IL",
+    location: "Cambridge, MA",
     rating: 5,
     quote:
       "Professional from start to finish. Our bathroom remodel looks like something out of a magazine. Highly recommend PHILL CONTRACTING.",
@@ -30,7 +30,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t3",
     name: "Linda & Robert K.",
-    location: "Rochester, IL",
+    location: "Newton, MA",
     rating: 5,
     quote:
       "They handled our home addition with real care and clear communication. The quality of work exceeded our expectations.",
@@ -38,7 +38,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t4",
     name: "Michael D.",
-    location: "Sherman, IL",
+    location: "Somerville, MA",
     rating: 5,
     quote:
       "Honest, reliable, and skilled. The new siding and deck look incredible. This is the contractor you've been looking for.",

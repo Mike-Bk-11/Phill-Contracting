@@ -8,33 +8,34 @@ export const siteConfig = {
   tagline: "Quality Home Remodeling & Construction",
 
   // Logo image. A placeholder SVG lives at `public/logo.svg`.
-  // To use your real logo: save your file as `public/logo.png`, then change
-  // this line to `logo: "/logo.png"` (or simply overwrite public/logo.svg).
-  logo: "/logo.png",
+  // Save your real logo as a transparent PNG in `public/` and point this at it.
+  // Tip: if you replace the file, use a NEW filename (e.g. logo-v2.png) so
+  // browsers/CDNs don't serve a stale cached copy.
+  logo: "/phill-logo.png",
   // Natural aspect ratio of the logo (width / height) used for sizing.
   logoWidth: 300,
   logoHeight: 115,
   description:
-    "PHILL CONTRACTING is a licensed and insured home remodeling and general construction company serving homeowners with kitchens, bathrooms, additions, roofing, and more.",
+    "PHILL CONTRACTING is a licensed and insured remodeling and general construction company serving both residential and commercial clients — kitchens, bathrooms, additions, build-outs, renovations, and more.",
 
   // TODO: Replace with your real contact details.
-  phone: "(555) 123-4567",
-  phoneHref: "tel:+15551234567",
+  phone: "(781) 929-3539",
+  phoneHref: "tel:+17819293539",
   email: "info@phillcontracting.com",
   emailHref: "mailto:info@phillcontracting.com",
 
   // TODO: Replace with your real address / service area.
   address: {
-    street: "123 Main Street",
-    city: "Springfield",
-    state: "IL",
-    zip: "62701",
+    street: "Norwood",
+    city: "Boston",
+    state: "MA",
+    zip: "02062",
   },
-  serviceArea: "Springfield and surrounding areas within 50 miles",
+  serviceArea: "Boston and surrounding areas within 50 miles",
 
   // Business hours (shown in footer / contact).
   hours: [
-    { day: "Mon – Fri", time: "7:00 AM – 6:00 PM" },
+    { day: "Mon – Fri", time: "8:00 AM – 5:00 PM" },
     { day: "Saturday", time: "8:00 AM – 2:00 PM" },
     { day: "Sunday", time: "Closed" },
   ],
@@ -44,12 +45,27 @@ export const siteConfig = {
   yearsInBusiness: 15,
   projectsCompleted: 500,
 
-  // TODO: Replace with your real social links (leave empty string to hide).
+  // Social links (leave empty string "" to hide that icon).
   social: {
-    facebook: "https://facebook.com",
-    instagram: "https://instagram.com",
-    google: "https://google.com",
+    facebook: "https://www.facebook.com/share/1EbeuYsa9W/?mibextid=wwXIfr",
+    instagram: "",
+    google: "",
   },
+
+  // Google reviews.
+  // - reviewUrl: the "write a review" link customers click to leave a review.
+  //   Get it from your Google Business Profile → Ask for reviews → copy the
+  //   short link (looks like https://g.page/r/XXXXXXXX/review).
+  // - profileUrl: link to your Google listing where all reviews are shown.
+  // Until you have these, the placeholders point to a Google search.
+  google: {
+    reviewUrl: "https://www.google.com/search?q=PHILL+CONTRACTING+reviews",
+    profileUrl: "https://www.google.com/search?q=PHILL+CONTRACTING",
+  },
+
+  // Set to true once you have real Google reviews to feature. When false, the
+  // Reviews section only shows the "leave us a review" call-to-action.
+  showReviews: false,
 
   // Used for SEO / canonical URLs. TODO: set to your real domain once deployed.
   url: "https://phill-contracting.vercel.app",

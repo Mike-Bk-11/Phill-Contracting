@@ -7,7 +7,7 @@ export function Services() {
       <SectionHeading
         eyebrow="What We Do"
         title="Our Services"
-        description="From single-room updates to whole-home transformations, we bring skill and care to every project."
+        description="From single-room updates to whole-home transformations and commercial build-outs, we bring skill and care to every residential and commercial project."
       />
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -114,6 +114,13 @@ function Icon({ name }: { name: ServiceIcon }) {
         <svg {...common}>
           <path d="M3 21V8l9-5 9 5v13" />
           <path d="M9 21v-6h6v6M3 12h18" />
+        </svg>
+      );
+    case "commercial":
+      return (
+        <svg {...common}>
+          <path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16M13 21V9h5a1 1 0 0 1 1 1v11" />
+          <path d="M8 8h2M8 12h2M8 16h2M16 13h0M16 17h0" />
         </svg>
       );
     default:

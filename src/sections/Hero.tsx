@@ -19,9 +19,7 @@ export function Hero() {
 
       <Container className="flex min-h-[92vh] flex-col justify-center py-32 sm:min-h-[90vh]">
         <div className="max-w-2xl">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-accent-200 ring-1 ring-white/20">
-            Licensed & Insured · {siteConfig.yearsInBusiness}+ Years Experience
-          </p>
+    
           <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             Building & Remodeling Homes You&apos;ll Love
           </h1>
@@ -39,7 +37,7 @@ export function Hero() {
           </div>
 
           {/* Trust badges */}
-          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/15 pt-8">
+          {/* <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/15 pt-8">
             <div>
               <dt className="text-3xl font-bold text-white">
                 {siteConfig.yearsInBusiness}+
@@ -56,7 +54,7 @@ export function Hero() {
               <dt className="text-3xl font-bold text-white">5.0</dt>
               <dd className="mt-1 text-sm text-brand-200">Average rating</dd>
             </div>
-          </dl>
+          </dl> */}
         </div>
       </Container>
     </section>
