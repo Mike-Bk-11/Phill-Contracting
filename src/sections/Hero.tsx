@@ -26,9 +26,7 @@ export function Hero() {
             Building & Remodeling Homes You&apos;ll Love
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-100">
-            {siteConfig.name} delivers expert home remodeling and construction —
-            from dream kitchens and baths to additions and full renovations.
-            Quality craftsmanship, honest pricing, and on-time results.
+            {siteConfig.name} Owner-operated service with a clear scope and documented steps. Licensed general contractor specializing in premium custom homes, renovations, and commercial builds.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">

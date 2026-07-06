@@ -5,7 +5,7 @@ type SectionProps = {
   id?: string;
   children: ReactNode;
   className?: string;
-  /** When true, uses a light gray background to alternate sections. */
+  /** When true, uses a warm cream background to alternate sections. */
   muted?: boolean;
 };
 
@@ -15,7 +15,7 @@ export function Section({ id, children, className = "", muted = false }: Section
     <section
       id={id}
       className={`scroll-mt-20 py-16 sm:py-24 ${
-        muted ? "bg-brand-50" : "bg-white"
+        muted ? "bg-cream" : "bg-white"
       } ${className}`}
     >
       <Container>{children}</Container>

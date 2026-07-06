@@ -3,11 +3,19 @@
  * TODO: Replace all placeholder values below with the real company details.
  */
 export const siteConfig = {
-  name: "Phill Contracting",
-  legalName: "Phill Contracting LLC",
+  name: "PHILL CONTRACTING",
+  legalName: "PHILL CONTRACTING LLC",
   tagline: "Quality Home Remodeling & Construction",
+
+  // Logo image. A placeholder SVG lives at `public/logo.svg`.
+  // To use your real logo: save your file as `public/logo.png`, then change
+  // this line to `logo: "/logo.png"` (or simply overwrite public/logo.svg).
+  logo: "/logo.png",
+  // Natural aspect ratio of the logo (width / height) used for sizing.
+  logoWidth: 300,
+  logoHeight: 115,
   description:
-    "Phill Contracting is a licensed and insured home remodeling and general construction company serving homeowners with kitchens, bathrooms, additions, roofing, and more.",
+    "PHILL CONTRACTING is a licensed and insured home remodeling and general construction company serving homeowners with kitchens, bathrooms, additions, roofing, and more.",
 
   // TODO: Replace with your real contact details.
   phone: "(555) 123-4567",

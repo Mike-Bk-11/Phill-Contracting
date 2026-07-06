@@ -2,33 +2,39 @@
 
 /**
  * Brand theme for Phill Contracting.
- * Palette: deep navy/charcoal base with a warm amber/orange accent —
- * a professional, trustworthy look common for contractors.
+ * Palette drawn from the company logo:
+ *  - brand:  charcoal / slate gray (the "PC" mark and wordmark ink)
+ *  - accent: steel blue (the underline gradient + roof accent)
+ *  - cream:  the warm off-white logo background
  * TODO: Tweak these colors to match your brand / logo.
  */
 @theme {
-  --color-brand-50: #eef4fb;
-  --color-brand-100: #d6e3f4;
-  --color-brand-200: #adc6e9;
-  --color-brand-300: #7ba3d9;
-  --color-brand-400: #4d7cc4;
-  --color-brand-500: #2f5da6;
-  --color-brand-600: #234782;
-  --color-brand-700: #1c3766;
-  --color-brand-800: #16294b;
-  --color-brand-900: #0f1d38;
-  --color-brand-950: #0a1428;
+  --color-brand-50: #f5f6f7;
+  --color-brand-100: #e6e8ea;
+  --color-brand-200: #ccd1d4;
+  --color-brand-300: #a7afb4;
+  --color-brand-400: #7c868c;
+  --color-brand-500: #5f696f;
+  --color-brand-600: #4b545a;
+  --color-brand-700: #3f484d;
+  --color-brand-800: #343b3f;
+  --color-brand-900: #2a2f33;
+  --color-brand-950: #1b1f22;
 
-  --color-accent-50: #fff8ed;
-  --color-accent-100: #ffefd4;
-  --color-accent-200: #ffdba8;
-  --color-accent-300: #ffc071;
-  --color-accent-400: #ff9d38;
-  --color-accent-500: #f97f12;
-  --color-accent-600: #ea6407;
-  --color-accent-700: #c24b08;
-  --color-accent-800: #9a3c0f;
-  --color-accent-900: #7c3310;
+  --color-accent-50: #eef6fc;
+  --color-accent-100: #d5e9f8;
+  --color-accent-200: #b0d4f0;
+  --color-accent-300: #7ab8e5;
+  --color-accent-400: #4098d5;
+  --color-accent-500: #2179bd;
+  --color-accent-600: #1a66a6;
+  --color-accent-700: #185488;
+  --color-accent-800: #194970;
+  --color-accent-900: #17405e;
+  --color-accent-950: #0f2a3f;
+
+  --color-cream: #f4f1ea;
+  --color-cream-dark: #ece7dc;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif, sans-serif;

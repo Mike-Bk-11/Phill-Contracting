@@ -25,7 +25,7 @@ export const testimonials: Testimonial[] = [
     location: "Chatham, IL",
     rating: 5,
     quote:
-      "Professional from start to finish. Our bathroom remodel looks like something out of a magazine. Highly recommend Phill Contracting.",
+      "Professional from start to finish. Our bathroom remodel looks like something out of a magazine. Highly recommend PHILL CONTRACTING.",
   },
   {
     id: "t3",

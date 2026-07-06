@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 115" role="img" aria-label="Phill Contracting — Home Improvement">
+  <defs>
+    <linearGradient id="pcBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4098d5"/>
+      <stop offset="1" stop-color="#185488"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Roof + house mark -->
+  <g fill="none" stroke="#3f484d" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M96 40 L150 12 L204 40"/>
+    <path d="M110 36 L110 66 L190 66 L190 36"/>
+  </g>
+  <!-- P and C monogram -->
+  <g fill="#3f484d" font-family="Poppins, Arial, sans-serif" font-weight="800">
+    <text x="118" y="60" font-size="34">P</text>
+    <text x="158" y="60" font-size="34">C</text>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="150" y="90" text-anchor="middle" fill="#3f484d"
+        font-family="Poppins, Arial, sans-serif" font-weight="800"
+        font-size="20" letter-spacing="1.5">PHILL CONTRACTING</text>
+
+  <!-- Divider -->
+  <rect x="70" y="97" width="160" height="2" fill="url(#pcBlue)"/>
+
+  <!-- Subtitle -->
+  <text x="150" y="111" text-anchor="middle" fill="#185488"
+        font-family="Poppins, Arial, sans-serif" font-weight="600"
+        font-size="10" letter-spacing="3">HOME IMPROVEMENT</text>
+</svg>
