@@ -21,8 +21,8 @@ export const siteConfig = {
   // TODO: Replace with your real contact details.
   phone: "(781) 929-3539",
   phoneHref: "tel:+17819293539",
-  email: "info@phillcontracting.com",
-  emailHref: "mailto:info@phillcontracting.com",
+  email: "phillcontracting@outlook.com",
+  emailHref: "mailto:phillcontracting@outlook.com",
 
   // TODO: Replace with your real address / service area.
   address: {
