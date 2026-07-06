@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/**
+ * Brand theme for Phill Contracting.
+ * Palette: deep navy/charcoal base with a warm amber/orange accent —
+ * a professional, trustworthy look common for contractors.
+ * TODO: Tweak these colors to match your brand / logo.
+ */
+@theme {
+  --color-brand-50: #eef4fb;
+  --color-brand-100: #d6e3f4;
+  --color-brand-200: #adc6e9;
+  --color-brand-300: #7ba3d9;
+  --color-brand-400: #4d7cc4;
+  --color-brand-500: #2f5da6;
+  --color-brand-600: #234782;
+  --color-brand-700: #1c3766;
+  --color-brand-800: #16294b;
+  --color-brand-900: #0f1d38;
+  --color-brand-950: #0a1428;
+
+  --color-accent-50: #fff8ed;
+  --color-accent-100: #ffefd4;
+  --color-accent-200: #ffdba8;
+  --color-accent-300: #ffc071;
+  --color-accent-400: #ff9d38;
+  --color-accent-500: #f97f12;
+  --color-accent-600: #ea6407;
+  --color-accent-700: #c24b08;
+  --color-accent-800: #9a3c0f;
+  --color-accent-900: #7c3310;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset anchor targets so the sticky header doesn't cover section headings. */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-white text-brand-900 antialiased;
+}
+
+/* Utility: subtle section fade-in on scroll (progressive enhancement). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
