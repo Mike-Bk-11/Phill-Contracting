@@ -81,7 +81,7 @@ export function AdminDashboard({
     projectCategories[0]
   );
   const [location, setLocation] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -92,8 +92,8 @@ export function AdminDashboard({
     setError(null);
     setMessage(null);
 
-    if (!file) {
-      setError("Please choose an image.");
+    if (files.length === 0) {
+      setError("Please choose at least one image.");
       return;
     }
 
@@ -101,7 +101,7 @@ export function AdminDashboard({
     body.set("title", title);
     body.set("category", category);
     body.set("location", location);
-    body.set("image", file);
+    for (const f of files) body.append("image", f);
 
     setLoading(true);
     try {
@@ -114,11 +114,12 @@ export function AdminDashboard({
         setError(data.error ?? "Upload failed.");
         return;
       }
-      setMessage("Project added.");
+      const count = data.count ?? 1;
+      setMessage(`Added ${count} photo${count === 1 ? "" : "s"}.`);
       setTitle("");
       setLocation("");
       setCategory(projectCategories[0]);
-      setFile(null);
+      setFiles([]);
       (e.target as HTMLFormElement).reset();
       router.refresh();
     } finally {
@@ -166,14 +167,20 @@ export function AdminDashboard({
       >
         <div className="sm:col-span-2">
           <label className="block text-sm font-medium text-brand-700">
-            Photo
+            Photos <span className="text-brand-400">(you can select several)</span>
           </label>
           <input
             type="file"
             accept="image/*"
-            onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            multiple
+            onChange={(e) => setFiles(Array.from(e.target.files ?? []))}
             className="mt-1 block w-full text-sm text-brand-600 file:mr-4 file:rounded-lg file:border-0 file:bg-brand-100 file:px-4 file:py-2 file:font-medium file:text-brand-700 hover:file:bg-brand-200"
           />
+          {files.length > 0 && (
+            <p className="mt-1 text-xs text-brand-500">
+              {files.length} file{files.length === 1 ? "" : "s"} selected
+            </p>
+          )}
         </div>
 
         <div>
@@ -225,7 +232,11 @@ export function AdminDashboard({
             disabled={loading}
             className="rounded-lg bg-accent-500 px-5 py-2.5 font-semibold text-white hover:bg-accent-600 disabled:opacity-60"
           >
-            {loading ? "Uploading…" : "Add project"}
+            {loading
+              ? "Uploading…"
+              : files.length > 1
+                ? `Add ${files.length} photos`
+                : "Add photo"}
           </button>
           {message && <p className="text-sm text-green-600">{message}</p>}
           {error && <p className="text-sm text-red-600">{error}</p>}
