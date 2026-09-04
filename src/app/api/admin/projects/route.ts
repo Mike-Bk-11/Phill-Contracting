@@ -56,9 +56,22 @@ export async function POST(request: Request) {
   }
 
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "-").toLowerCase();
+
+  // The Blob store was created with a non-standard env prefix, so accept either
+  // the standard name or the prefixed one Vercel generated.
+  const blobToken =
+    process.env.BLOB_READ_WRITE_TOKEN ?? process.env._READ_WRITE_TOKEN;
+  if (!blobToken) {
+    return NextResponse.json(
+      { error: "Image storage is not configured (missing Blob token)." },
+      { status: 500 }
+    );
+  }
+
   const blob = await put(`projects/${safeName}`, file, {
     access: "public",
     addRandomSuffix: true,
+    token: blobToken,
   });
 
   const [row] = await db
