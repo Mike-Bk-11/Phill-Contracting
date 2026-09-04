@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import {
-  projects,
   projectCategories,
   type Project,
   type ProjectCategory,
@@ -12,7 +11,7 @@ import {
 
 type Filter = "All" | ProjectCategory;
 
-export function Projects() {
+export function Projects({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<Filter>("All");
   const [active, setActive] = useState<Project | null>(null);
 
@@ -76,6 +75,12 @@ export function Projects() {
           </button>
         ))}
       </div>
+
+      {filtered.length === 0 && (
+        <p className="mt-10 text-center text-brand-500">
+          No projects to show yet. Check back soon.
+        </p>
+      )}
 
       {/* Lightbox */}
       {active && (
