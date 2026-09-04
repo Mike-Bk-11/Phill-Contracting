@@ -269,6 +269,7 @@ export function AdminDashboard({
                 src={p.imageUrl}
                 alt={p.title}
                 fill
+                unoptimized={/^https?:\/\//.test(p.imageUrl)}
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover"
               />
