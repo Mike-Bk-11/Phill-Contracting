@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 import { projectCategories, type ProjectCategory } from "@/data/projects";
 
 type AdminProject = {
@@ -97,24 +98,31 @@ export function AdminDashboard({
       return;
     }
 
-    const body = new FormData();
-    body.set("title", title);
-    body.set("category", category);
-    body.set("location", location);
-    for (const f of files) body.append("image", f);
-
     setLoading(true);
     try {
+      // Upload each file straight to Blob (bypasses the serverless size limit).
+      const uploaded: { url: string; pathname: string }[] = [];
+      for (let i = 0; i < files.length; i++) {
+        setMessage(`Uploading ${i + 1} of ${files.length}…`);
+        const blob = await upload(files[i].name, files[i], {
+          access: "public",
+          handleUploadUrl: "/api/admin/blob-upload",
+        });
+        uploaded.push({ url: blob.url, pathname: blob.pathname });
+      }
+
       const res = await fetch("/api/admin/projects", {
         method: "POST",
-        body,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, category, location, images: uploaded }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
         setError(data.error ?? "Upload failed.");
+        setMessage(null);
         return;
       }
-      const count = data.count ?? 1;
+      const count = data.count ?? uploaded.length;
       setMessage(`Added ${count} photo${count === 1 ? "" : "s"}.`);
       setTitle("");
       setLocation("");
@@ -122,6 +130,9 @@ export function AdminDashboard({
       setFiles([]);
       (e.target as HTMLFormElement).reset();
       router.refresh();
+    } catch (err) {
+      setError((err as Error).message || "Upload failed.");
+      setMessage(null);
     } finally {
       setLoading(false);
     }

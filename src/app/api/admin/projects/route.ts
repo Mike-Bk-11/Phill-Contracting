@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
-import { put } from "@vercel/blob";
 import { desc, asc } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { projects as projectsTable } from "@/lib/db/schema";
@@ -8,8 +7,6 @@ import { projectCategories, type ProjectCategory } from "@/data/projects";
 import { isAdmin } from "@/lib/auth";
 
 export const runtime = "nodejs";
-
-const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
 
 export async function GET() {
   if (!(await isAdmin())) {
@@ -22,24 +19,38 @@ export async function GET() {
   return NextResponse.json({ projects: rows });
 }
 
+type UploadedImage = { url: string; pathname: string };
+
 export async function POST(request: Request) {
   if (!(await isAdmin())) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  let form: FormData;
+  let payload: {
+    title?: unknown;
+    category?: unknown;
+    location?: unknown;
+    images?: unknown;
+  };
   try {
-    form = await request.formData();
+    payload = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid form data." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const title = String(form.get("title") ?? "").trim();
-  const category = String(form.get("category") ?? "").trim();
-  const location = String(form.get("location") ?? "").trim();
-  const files = form
-    .getAll("image")
-    .filter((f): f is File => f instanceof File && f.size > 0);
+  const title = String(payload.title ?? "").trim();
+  const category = String(payload.category ?? "").trim();
+  const location = String(payload.location ?? "").trim();
+  const images: UploadedImage[] = Array.isArray(payload.images)
+    ? payload.images
+        .filter(
+          (img): img is UploadedImage =>
+            typeof img === "object" &&
+            img !== null &&
+            typeof (img as UploadedImage).url === "string"
+        )
+        .map((img) => ({ url: img.url, pathname: img.pathname }))
+    : [];
 
   if (!title) {
     return NextResponse.json({ error: "Title is required." }, { status: 400 });
@@ -47,53 +58,24 @@ export async function POST(request: Request) {
   if (!projectCategories.includes(category as ProjectCategory)) {
     return NextResponse.json({ error: "Invalid category." }, { status: 400 });
   }
-  if (files.length === 0) {
+  if (images.length === 0) {
     return NextResponse.json(
       { error: "At least one image is required." },
       { status: 400 }
     );
   }
-  for (const file of files) {
-    if (!file.type.startsWith("image/")) {
-      return NextResponse.json(
-        { error: `"${file.name}" is not an image.` },
-        { status: 400 }
-      );
-    }
-    if (file.size > MAX_BYTES) {
-      return NextResponse.json(
-        { error: `"${file.name}" is larger than 10 MB.` },
-        { status: 400 }
-      );
-    }
-  }
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    return NextResponse.json(
-      { error: "Image storage is not configured (missing Blob token)." },
-      { status: 500 }
-    );
-  }
-
-  // Upload every file and create one gallery entry per photo, all sharing the
-  // same title, category, and location.
+  // One gallery entry per uploaded photo, all sharing title/category/location.
   const created = [];
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "-").toLowerCase();
-    const blob = await put(`projects/${safeName}`, file, {
-      access: "public",
-      addRandomSuffix: true,
-    });
-
+  for (let i = 0; i < images.length; i++) {
     const [row] = await db
       .insert(projectsTable)
       .values({
         title,
         category: category as ProjectCategory,
         location,
-        imageUrl: blob.url,
-        blobPathname: blob.pathname,
+        imageUrl: images[i].url,
+        blobPathname: images[i].pathname,
         sortOrder: i,
       })
       .returning();
