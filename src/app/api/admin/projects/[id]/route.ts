@@ -33,10 +33,8 @@ export async function DELETE(
 
   // Remove the stored image, then the DB row.
   if (row.blobPathname) {
-    const blobToken =
-      process.env.BLOB_READ_WRITE_TOKEN ?? process.env._READ_WRITE_TOKEN;
     try {
-      await del(row.imageUrl, blobToken ? { token: blobToken } : undefined);
+      await del(row.imageUrl);
     } catch {
       // Blob may already be gone; continue removing the DB row.
     }
